@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %} {{block.super}} | Index2  {% endblock title %}
+
+{% block content %}
+<ol>
+    <li><a href="{% url 'seconda_app:es_if'%}">IF</a></li>
+    <li><a href="{% url 'seconda_app:if_else_elif'%}">IF_ELSE</a></li>
+    <li><a href="{% url 'seconda_app:if_else_elif'%}">ELIF</a></li>
+    <li><a href="{% url 'seconda_app:es_for'%}">FOR</a></li>
+    <li><a href="/">Index2</a></li>
+</ol>
+{% endblock content %}

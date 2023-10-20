@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Es IF ELSE</title>
-</head>
-<body>
-    <b>var1 = {{ var1 }}</b> <br/>
+{% extends "base.html" %}
+
+{% block title %} {{block.super}} | IF_ELSE_ELIF {% endblock title %}
+
+{% block content %}
+<b>var1 = {{ var1 }}</b> <br/>
     <b>var2 = {{ var2 }}</b> <br/>
     <b>var3 = {{ var3 }}</b> <br/>
 
@@ -27,19 +24,19 @@
     {% endif %}
 
     {% if var1 <= var2 %}
-        <p><i>var1 è minore o uguale di var2 <</i></p>
+        <p><i>var1 è minore o uguale di var2 </i></p>
     {% elif var1 > var2 %}
         <p><i>var1 è maggiore  di var2 </i></p>
     {% endif %}
 
     {% if var1 >= var2 %}
-        <p><i>var1 è maggiore o uguale di var2 <</i></p>
+        <p><i>var1 è maggiore o uguale di var2 </i></p>
     {% elif var1 < var2 %}
         <p><i>var1 è minore  di var2 </i></p>
     {% endif %}
 
     {% if var1 == var2 %}
-        <p><i>var1 è uguale a var2 <</i></p>
+        <p><i>var1 è uguale a var2 </i></p>
     {% elif var1 != var2 %}
         <p><i>var1 non è uguale a var2 </i></p>
     {% endif %}
@@ -57,5 +54,4 @@
     {% else %}
     <p><i>var1 è uguale a var2 </i></p>
     {% endif %}
-</body>
-</html>
+{% endblock content %}

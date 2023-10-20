@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>indexRoot</title>
-</head>
-<body>
-    <a href="/admin">Pannello admin</a>
+{% extends "base.html" %}
+
+{% block title %} {{block.super}} | IndexRoot  {% endblock title %}
+
+{% block content %}
+<a href="/admin">Pannello admin</a>
     <br>
     <a href="{% url 'prima_app:index'%}">Index prima app</a>
     <br>
-    <a href="{% url 'seconda_app:index'%}">Index seconda app</a>
-</body>
-</html>
+    <a href="{% url 'seconda_app:index2'%}">Index seconda app</a>
+{% endblock content %}

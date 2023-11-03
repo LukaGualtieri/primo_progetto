@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %} {{block.super}} | Max - Min  {% endblock title %}
+
+{% block content %}
+        {% if var1 > var2 %}
+            <li style="color:green;">Primo numero: {{var1}}</li>
+            <li style="color:red;">Secondo numero: {{var2}}</li>
+        {% elif var1 < var2 %}
+            <li style="color:red;">Primo numero: {{var1}}</li>
+            <li style="color:green;">Secondo numero: {{var2}}</li>
+        {% else %}
+            <li>Primo numero: {{var1}}</li>
+            <li>Secondo numero: {{var2}}</li>
+        {% endif %}
+    <br>
+    <p>Somma: {{var1}}+{{var2}}={{var3}}</p>
+{% endblock content %}

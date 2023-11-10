@@ -3,6 +3,10 @@
 {% block title %} {{block.super}} | Articoli di un giornalista  {% endblock title %}
 
 {% block content %}
+
+{% if pk  %}
+    <h1>Articoli di un Giornalista:</h1>
+    {% if giornalista %}
     <p><strong>Giornalista: </strong> {{ giornalista }}</p>
     {% for articolo in articoli %}
         <br>
@@ -11,5 +15,17 @@
         <hr>
         <br>
     {% endfor %}
-   
+    {% else %}
+        <p>Nessun articolo associato al giornalista avente chiave {{ pk }}</p>
+    {% endif %}
+{% else %}
+    <h1>Tutti gli articoli:</h1>
+    {% for articolo in articoli %}
+        <p><strong>Titolo: </strong> {{ articolo.titolo }}</p>
+        <p><strong>Contenuto: </strong> {{ articolo.contenuto }}</p>
+        <p><strong>Autore: </strong> {{ articolo.giornalista }}</p>
+        <hr>
+    {% endfor %}
+{% endif %}
+
 {% endblock content %}

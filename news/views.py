@@ -40,17 +40,26 @@ def home(request):
     print(context)
     return render(request, "homepage1.html", context)
 
-def listaArticoli(request, pk):
-    articoli = Articolo.objects.filter(giornalista_id=pk)
-    giornalista = Giornalista.objects.get(id=pk)
-    context = {
-        'articoli' : articoli,
-        'giornalista' : giornalista,
-    }
-    return render(request, 'lista_articoli.html', context)
-
 def articoloDetailView(request, pk):
     #articolo = Articolo.objects.get(pk=pk)
     articolo = get_object_or_404(Articolo, pk=pk)
     context = {"articolo": articolo}
     return render(request, "articolo_detail.html", context)
+
+def listaArticoli(request, pk=None):
+    if(pk == None):
+        articoli = Articolo.objects.all()
+        giornalista = None
+    else: 
+        articoli = Articolo.objects.filter(giornalista_id=pk)
+        try:
+            giornalista = Giornalista.objects.get(id=pk)
+        except:
+            giornalista = None
+
+    context = {
+        'articoli' : articoli,
+        'giornalista' : giornalista,
+        'pk' : pk,
+    }
+    return render(request, 'lista_articoli.html', context)

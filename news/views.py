@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Articolo, Giornalista
 
@@ -39,3 +39,12 @@ def home(request):
     context = {"articoli": articoli, "giornalisti": giornalisti}
     print(context)
     return render(request, "homepage1.html", context)
+
+def listaArticoli(request, pk):
+    articoli = Articolo.objects.filter(giornalista_id=pk)
+    giornalista = Giornalista.objects.get(id=pk)
+    context = {
+        'articoli' : articoli,
+        'giornalista' : giornalista,
+    }
+    return render(request, 'lista_articoli.html', context)

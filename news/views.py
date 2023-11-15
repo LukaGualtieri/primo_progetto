@@ -68,11 +68,13 @@ def listaArticoli(request, pk=None):
 def queryBase(request):
     #1.Tutti gli articoli scritti da giornalisti di un certo cognome:
     articoli_cognome = Articolo.objects.filter(giornalista__cognome='Rossi')
+    
     #2.Totale
     numero_totale_articoli = Articolo.objects.count()
 
     #3.Contare il numero di articoli scritti da un giornalista specifico:
     giornalista_1 = Giornalista.objects.get(id=1)
+    numero_articoli_giornalista_1 = Articolo.objects.filter(giornalista=giornalista_1).count()
 
     #4.Ordinare gli articoli per numero di visualizzazioni in ordine decrescente
     articoli_ordinati = Articolo.objects.order_by('-visualizzazioni')
@@ -95,7 +97,6 @@ def queryBase(request):
     #10.Gli articoli scritti da giornalisti nati prima del 1980:
     giornalisti_nati = Giornalista.objects.filter(anno_di_nascita__lt=datetime.date(1980, 1, 1)) 
     articoli_giornalisti = Articolo.objects.filter(giornalista__in=giornalisti_nati)
-   
     
     #11.Il giornalista più giovane:
     giornalista_giovane = Giornalista.objects.order_by('anno_di_nascita').first()
@@ -106,10 +107,10 @@ def queryBase(request):
     #13.Gli ultimi 5 articoli pubblicati:
     ultimi = Articolo.objects.order_by('-data')[:5]
     
-    #14. tutti gli articoli con un certo numero minimo di visualizzazioni: 
+    #14.Tutti gli articoli con un certo numero minimo di visualizzazioni: 
     articoli_minime_visualizzazioni = Articolo.objects.filter(visualizzazioni__gte=100)
     
-    #15. tutti gli articoli che contengono una certa parola nel titolo: 
+    #15.Tutti gli articoli che contengono una certa parola nel titolo: 
     articoli_parola = Articolo.objects.filter(titolo_icontains='importante')
 
     # Creare il dizionario context
@@ -117,6 +118,7 @@ def queryBase(request):
         'articoli_cognome' : articoli_cognome,
         'numero_totale_articoli' : numero_totale_articoli,
         'giornalista_1' : giornalista_1,
+        'numero_articoli_giornalista_1' : numero_articoli_giornalista_1,
         'articoli_ordinati' : articoli_ordinati,
         'articoli_senza_visualizzazioni' : articoli_senza_visualizzazioni,
         'articolo_piu_visualizzato' : articolo_piu_visualizzato,

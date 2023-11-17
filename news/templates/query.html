@@ -93,37 +93,37 @@
 
 <h4>16. Articoli pubblicati in un certo mese di un anno specifico: </h4>
 <ul>
-    {% for articolo in articoli_parola %}
+    {% for articolo in articoli_mese_anno %}
         <li>{{ articolo.titolo }}</li>
     {% endfor %}
 </ul>
 
 <h4>17. Giornalisti con almeno un articolo con più di 100 visualizzazioni: </h4>
 <ul>
-    {% for articolo in articoli_parola %}
-        <li>{{ articolo.titolo }}</li>
+    {% for giornalista in giornalisti_con_articoli_popolari %}
+        <li>{{ giornalista.nome }} {{ giornalista.cognome }}</li>
     {% endfor %}
 </ul>
 
 <h4>18. Tutti gli articoli scritti da dopo il 1/1/2000 e visualizzazioni con valore uguale o maggiore di 150:  </h4>
 <ul>
-    {% for articolo in articoli_parola %}
-        <li>{{ articolo.titolo }}</li>
+    {% for articolo in articoli_con_and %}
+        <li>{{ articolo.titolo }} - Views: {{ articolo.visualizzazioni }}</li>
     {% endfor %}
 </ul>
 
+
 <h4>19. Tutti gli articoli scritti da dopo il 1/1/2000 o visualizzazioni con valore uguale o maggiore di 150: </h4>
 <ul>
-    {% for articolo in articoli_parola %}
-        <li>{{ articolo.titolo }}</li>
+    {% for articolo in articoli_con_or %}
+        <li>{{ articolo.titolo }} - Views: {{ articolo.visualizzazioni }}</li>
     {% endfor %}
 </ul>
 
 <h4>20. Tutti gli articoli scritti da prima del 1/1/2000: </h4>
 <ul>
-    {% for articolo in articoli_parola %}
+    {% for articolo in articoli_con_not %}
         <li>{{ articolo.titolo }}</li>
     {% endfor %}
 </ul>
-
 {% endblock content %}

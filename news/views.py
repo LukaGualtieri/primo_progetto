@@ -33,6 +33,9 @@ def home(request):
 
     return HttpResponse("<h1>" + response + "</h1>")
 """    
+def indexNews(request):
+    return render(request, "indexNews.html")
+
 
 def home(request):
     articoli = Articolo.objects.all()
@@ -46,6 +49,12 @@ def articoloDetailView(request, pk):
     articolo = get_object_or_404(Articolo, pk=pk)
     context = {"articolo": articolo}
     return render(request, "articolo_detail.html", context)
+
+def giornalistaDetailView(request, pk):
+    #giornalista = Giornalista.objects.get(pk=pk)
+    giornalista = get_object_or_404(Giornalista, pk=pk)
+    context = {"giornalista": giornalista}
+    return render(request, "giornalista_detail.html", context)
 
 def listaArticoli(request, pk=None):
     if(pk == None):
@@ -116,7 +125,7 @@ def queryBase(request):
     #16.Articoli pubblicati in un certo mese di un anno specifico:
     #nota per poter modificare la data di un articolo togliere la proprietà auto_now=True al field data nel model 
     #poi dare i comandi makemigrations e migrate per applicare le modifiche al database
-    articoli_mese_anno = Articolo.objects.filter(data__month=2, data__year=1999)
+    articoli_mese_anno = Articolo.objects.filter(data__month=7, data__year=2019) 
 
     #17.Giornalisti con almeno un articolo con più di 100 visualizzazioni
     giornalisti_con_articoli_popolari = Giornalista.objects.filter(articoli__visualizzazioni__gte=100).distinct()

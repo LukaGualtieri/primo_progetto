@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %} {{block.super}} | Media  {% endblock title %}
+
+{% block content %}
+
+        {% if media > 6 %}
+            <li style="color:green;">Media: {{media}}</li>
+        {% elif media < 6 %}
+            <li style="color:red;">Media: {{media}}</li>
+        {% else %}
+            <li>Media: {{media}}</li>
+        {% endif %}
+        
+{% endblock content %}
+

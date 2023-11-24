@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block title %} {{block.super}} | Query  {% endblock title %}
+
+{% block content %}
+
+<h1>Risultati Query</h1>
+
+<h4>1. Tutti gli articoli scritti da giornalisti di un certo cognome: </h4>
+<ul>
+    {% for articolo in articoli_cognome %}
+        <li>{{ articolo.titolo }}</li>
+    {% endfor %}
+</ul>
+
+<h4>2. Totale</h4>
+<p>{{ numero_totale_articoli }}</p>
+
+<h4>3. Contare il numero di articoli scritti da un giornalista specifico:</h4>
+<p>{{ numero_articoli_giornalista_1 }}</p>
+
+<h4>4. Ordinare gli articoli per numero di visualizzazioni in ordine decrescente</h4>
+<ul>
+    {% for articolo in articoli_ordinati %}
+        <li>{{ articolo.titolo }} - Views: {{ articolo.visualizzazioni }}</li>
+    {% endfor %}
+</ul>
+
+<h4>5. Tutti gli articoli che non hanno visualizzazioni:</h4>
+<ul>
+    {% for articolo in articoli_senza_visualizzazioni %}
+        <li>{{ articolo.titolo }}</li>
+    {% endfor %}
+</ul>
+
+<h4>6. Articolo più visualizzato</h4>
+<p>{{ articolo_piu_visualizzato.titolo }} - Views: {{ articolo_piu_visualizzato.visualizzazioni }}</p>
+
+<h4>7. Tutti i giornalisti nati dopo una certa data:</h4>
+<ul>
+    {% for giornalista in giornalisti_data %}
+        <li>{{ giornalista.nome }} {{ giornalista.cognome }}</li>
+    {% endfor %}
+</ul>
+
+<h4>8. Tutti gli articoli pubblicati in una data specifica:</h4>
+<ul>
+    {% for articolo in articoli_del_giorno %}
+        <li>{{ articolo.titolo }}</li>
+    {% endfor %}
+</ul>
+
+<h4>9. Tutti gli articoli pubblicati in un intervallo di date</h4>
+<ul>
+    {% for articolo in articoli_periodo %}
+        <li>{{ articolo.titolo }}</li>
+    {% endfor %}
+</ul>
+
+<h4>10. Gli articoli scritti da giornalisti nati prima del 1980:</h4>
+<ul>
+    {% for articolo in articoli_giornalisti %}
+        <li>{{ articolo.titolo }}</li>
+    {% endfor %}
+</ul>
+
+<h4>11. Il giornalista più giovane:</h4>
+<p>{{ giornalista_giovane.nome }} {{ giornalista_giovane.cognome }}</p>
+
+<h4>12. Il giornalista più anziano:</h4>
+<p>{{ giornalista_anziano.nome }} {{ giornalista_anziano.cognome }}</p>
+
+<h4>13. Gli ultimi 5 articoli pubblicati:</h4>
+<ul>
+    {% for articolo in ultimi %}
+        <li>{{ articolo.titolo }}</li>
+    {% endfor %}
+</ul>
+
+<h4>14. Tutti gli articoli con un certo numero minimo di visualizzazioni: </h4>
+<ul>
+    {% for articolo in articoli_minime_visualizzazioni %}
+        <li>{{ articolo.titolo }} - Views: {{ articolo.visualizzazioni }}</li>
+    {% endfor %}
+</ul>
+
+<h4>15. Tutti gli articoli che contengono una certa parola nel titolo: </h4>
+<ul>
+    {% for articolo in articoli_parola %}
+        <li>{{ articolo.titolo }}</li>
+    {% endfor %}
+</ul>
+
+<h4>16. Articoli pubblicati in un certo mese di un anno specifico: </h4>
+<ul>
+    {% for articolo in articoli_mese_anno %}
+        <li>{{ articolo.titolo }}</li>
+    {% endfor %}
+</ul>
+
+<h4>17. Giornalisti con almeno un articolo con più di 100 visualizzazioni: </h4>
+<ul>
+    {% for giornalista in giornalisti_con_articoli_popolari %}
+        <li>{{ giornalista.nome }} {{ giornalista.cognome }}</li>
+    {% endfor %}
+</ul>
+
+<h4>18. Tutti gli articoli scritti da dopo il 1/1/2000 e visualizzazioni con valore uguale o maggiore di 150:  </h4>
+<ul>
+    {% for articolo in articoli_con_and %}
+        <li>{{ articolo.titolo }} - Views: {{ articolo.visualizzazioni }}</li>
+    {% endfor %}
+</ul>
+
+
+<h4>19. Tutti gli articoli scritti da dopo il 1/1/2000 o visualizzazioni con valore uguale o maggiore di 150: </h4>
+<ul>
+    {% for articolo in articoli_con_or %}
+        <li>{{ articolo.titolo }} - Views: {{ articolo.visualizzazioni }}</li>
+    {% endfor %}
+</ul>
+
+<h4>20. Tutti gli articoli scritti da prima del 1/1/2000: </h4>
+<ul>
+    {% for articolo in articoli_con_not %}
+        <li>{{ articolo.titolo }}</li>
+    {% endfor %}
+</ul>
+{% endblock content %}

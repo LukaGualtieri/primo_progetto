@@ -47,13 +47,17 @@ def home(request):
 def articoloDetailView(request, pk):
     #articolo = Articolo.objects.get(pk=pk)
     articolo = get_object_or_404(Articolo, pk=pk)
-    context = {"articolo": articolo}
+    context = {'articolo': articolo}
     return render(request, "articolo_detail.html", context)
 
 def giornalistaDetailView(request, pk):
     #giornalista = Giornalista.objects.get(pk=pk)
     giornalista = get_object_or_404(Giornalista, pk=pk)
-    context = {"giornalista": giornalista}
+    articoli = Articolo.objects.filter(giornalista_id=pk)
+    context = {
+        'giornalista': giornalista, 
+        'articoliScritti': articoli
+        }
     return render(request, "giornalista_detail.html", context)
 
 def listaArticoli(request, pk=None):

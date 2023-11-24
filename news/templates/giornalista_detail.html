@@ -4,7 +4,9 @@
     <h4>Dettagli del giornalista: {{ giornalista.nome }} {{ giornalista.cognome }}</h4>
     <h5>Nato il {{ giornalista.anno_di_nascita }}</h5>
     <h5>Tutti i suoi articoli e visualizzazioni:</h5>
-        <ul>
-        <p><strong>Titolo: </strong> <a href={% url 'news:articolo_detail' articolo.id %}>{{ articolo.titolo }} - Visualizzazioni: {{ articolo.visualizzazioni }}</a></p>
-        </ul>
+        {% for articolo in articoliScritti%} 
+            <ul>
+            <p><strong>Titolo: </strong> <a href={% url 'news:articolo_detail' articolo.id %}>{{ articolo.titolo }} - Visualizzazioni: {{ articolo.visualizzazioni }}</a></p>
+            </ul>
+        {% endfor %}
 {% endblock content %}

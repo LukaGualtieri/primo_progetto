@@ -6,7 +6,7 @@
     <h5>Tutti i suoi articoli e visualizzazioni:</h5>
         {% for articolo in articoliScritti%} 
             <ul>
-            <p><strong>Titolo: </strong> <a href={% url 'news:articolo_detail' articolo.id %}>{{ articolo.titolo }} - Visualizzazioni: {{ articolo.visualizzazioni }}</a></p>
+            <p><strong>Titolo: </strong> <a href={% url 'news:articolo_detail' articolo.id %}>{{ articolo.titolo }}</a> - Visualizzazioni: {{ articolo.visualizzazioni }}</p>
             </ul>
         {% endfor %}
 {% endblock content %}

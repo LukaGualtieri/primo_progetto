@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %} {{block.super}} | Voti e Assenze studente  {% endblock title %}
+
+{% block content %}
+<ul>
+    {% for key, value in voti.items %}
+        <li>{{ key }}:</li>
+        <ul>
+        {% for materie in value %}
+            <li>{{ materie.0 }}, {{ materie.1 }}, {{ materie.2 }}</li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
+</ul>
+
+{% endblock content %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %} {{block.super}} | Media dei Voti studente  {% endblock title %}
+
+{% block content %}
+<ul>
+    {% for key, value in medie.items %}
+        <li>{{ key }}:  {{ value }}</li>
+    {% endfor %}
+</ul>
+{% endblock content %}

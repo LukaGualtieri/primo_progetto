@@ -3,7 +3,26 @@
 {% block title %} {{block.super}} | Voti Max e Min studente  {% endblock title %}
 
 {% block content %}
-
+<ul>
+    <li>Voto massimo: {{votoMax}}</li>
+    <li>Materie con voto massimo: 
+    {% for value in materieMax %}
+         {{ value }},
+    {% endfor %}
+    </li>
+    <li>Studenti con voto massimo:
+    {% for value in studenteMax %}
+        {{ value }},
+    {% endfor %}
+</li>
+    <li>Voto minimo: {{votoMin}}</li>
+    {% for value in materieMin %}
+        <li>Materie con voto minimo:  {{ value }}</li>
+    {% endfor %}
+    {% for value in studenteMin %}
+        <li>Studenti con voto minimo:  {{ value }}</li>
+    {% endfor %}
+</ul>
 
 
 {% endblock content %}

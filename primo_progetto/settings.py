@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 
 from pathlib import Path
-import os
+import os, corsheaders
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,11 +28,12 @@ SECRET_KEY = 'django-insecure-$bw4(61968rafxp4l8%l4n_1c+(gl!+4@#uv_#e@+(z&%^v@w0
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,6 +48,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

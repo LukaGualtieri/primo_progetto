@@ -222,23 +222,3 @@ def articoli_list_api(request):
     response=JsonResponse(data)
     return response
 
-def articolo_api(request,pk):
-    try:
-        articolo=Articolo.objects.get(pk=pk)
-        data={'articolo':{
-            "titolo":articolo.titolo,
-            "contenuto":articolo.contenuto,
-            "giornalista":articolo.giornalista,
-            "data":articolo.data,
-            "visualizzazioni":articolo.visualizzazioni,
-            }
-        }
-        response=JsonResponse(data)
-    except Articolo.DoesNotExist:
-        response=JsonResponse({
-            "error":{
-                "code":404,
-                "message":"Articolo non trovato!"
-            }},
-            status=404)
-    return response

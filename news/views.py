@@ -215,10 +215,3 @@ def giornalista_api(request,pk):
             status=404)
     return response
 
-
-def articoli_list_api(request):
-    articoli=Articolo.objects.all()
-    data={'articoli':list(articoli.values("pk","titolo","contenuto","giornalista","data","visualizzazioni"))}
-    response=JsonResponse(data)
-    return response
-

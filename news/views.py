@@ -1,7 +1,7 @@
 import datetime
 from django.shortcuts import render, get_object_or_404 
 from django.http import HttpResponse
-from django.http import JsonResponse
+#from django.http import JsonResponse
 from .models import Articolo, Giornalista
 
 # Create your views here.
@@ -190,3 +190,57 @@ def queryBase(request):
         'articoli_con_not' : articoli_con_not,
     }
     return render(request, 'query.html', context)
+
+"""
+def giornalisti_list_api(request):
+    giornalisti=Giornalista.objects.all()
+    data={'giornalisti':list(giornalisti.values("pk","nome","cognome"))}
+    response=JsonResponse(data)
+    return response
+
+def giornalista_api(request,pk):
+    try:
+        giornalista=Giornalista.objects.get(pk=pk)
+        data={'giornalista':{
+            "nome":giornalista.nome,
+            "cognome":giornalista.cognome,
+            }
+        }
+        response=JsonResponse(data)
+    except Giornalista.DoesNotExist:
+        response=JsonResponse({
+            "error":{
+                "code":404,
+                "message":"Giornalista non trovato!"
+            }},
+            status=404)
+    return response
+
+
+def articoli_list_api(request):
+    articoli=Articolo.objects.all()
+    data={'articoli':list(articoli.values("pk","titolo","contenuto","giornalista","data","visualizzazioni"))}
+    response=JsonResponse(data)
+    return response
+
+def articolo_api(request,pk):
+    try:
+        articolo=Articolo.objects.get(pk=pk)
+        data={'articolo':{
+            "titolo":articolo.titolo,
+            "contenuto":articolo.contenuto,
+            "giornalista":articolo.giornalista,
+            "data":articolo.data,
+            "visualizzazioni":articolo.visualizzazioni,
+            }
+        }
+        response=JsonResponse(data)
+    except Articolo.DoesNotExist:
+        response=JsonResponse({
+            "error":{
+                "code":404,
+                "message":"Articolo non trovato!"
+            }},
+            status=404)
+    return response
+"""

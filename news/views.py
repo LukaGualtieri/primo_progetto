@@ -190,28 +190,3 @@ def queryBase(request):
         'articoli_con_not' : articoli_con_not,
     }
     return render(request, 'query.html', context)
-
-def giornalisti_list_api(request):
-    giornalisti=Giornalista.objects.all()
-    data={'giornalisti':list(giornalisti.values("pk","nome","cognome"))}
-    response=JsonResponse(data)
-    return response
-
-def giornalista_api(request,pk):
-    try:
-        giornalista=Giornalista.objects.get(pk=pk)
-        data={'giornalista':{
-            "nome":giornalista.nome,
-            "cognome":giornalista.cognome,
-            }
-        }
-        response=JsonResponse(data)
-    except Giornalista.DoesNotExist:
-        response=JsonResponse({
-            "error":{
-                "code":404,
-                "message":"Giornalista non trovato!"
-            }},
-            status=404)
-    return response
-

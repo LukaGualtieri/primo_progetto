@@ -1,7 +1,7 @@
 import datetime
 from django.shortcuts import render, get_object_or_404 
 from django.http import HttpResponse
-#from django.http import JsonResponse
+from django.http import JsonResponse
 from .models import Articolo, Giornalista
 
 # Create your views here.
@@ -191,7 +191,6 @@ def queryBase(request):
     }
     return render(request, 'query.html', context)
 
-"""
 def giornalisti_list_api(request):
     giornalisti=Giornalista.objects.all()
     data={'giornalisti':list(giornalisti.values("pk","nome","cognome"))}
@@ -243,4 +242,3 @@ def articolo_api(request,pk):
             }},
             status=404)
     return response
-"""

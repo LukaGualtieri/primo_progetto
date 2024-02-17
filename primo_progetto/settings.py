@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'news',
     'prova_pratica_1',
     'voti',
-    #'products',
+    'products',
 ]
 
 MIDDLEWARE = [
@@ -72,7 +72,7 @@ TEMPLATES = [
                  os.path.join(BASE_DIR, 'prova_pratica_1/templates'), 
                  os.path.join(BASE_DIR, 'templates'),
                  os.path.join(BASE_DIR, 'voti/templates'),
-                 #os.path.join(BASE_DIR, 'products/templates'),
+                 os.path.join(BASE_DIR, 'products/templates'),
                  ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -130,11 +130,17 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+# STATIC_URL e MEDIA_URL definisicono gli URL di base per accedere ai file statici
+# e ai file multimediali nel progetto Django,
+# mentre MEDIA_ROOT definisce la directory fisica sul server in cui vengono  
+# salvati i file multimediali.
+
 STATIC_URL = 'static/'
+MEDIA_URL = 'media/'
+MEDIA_ROOT = "uploads"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

@@ -18,7 +18,7 @@ def product_detail(request,pk):
             "name":product.name,
             "manufacturer":product.manufacturer.name,
             "description":product.description,
-            "photo":product.photo,
+            "photo":product.photo.url,
             "price":product.price,
             "shipping_cost":product.shipping_cost,
             "quantity":product.quantity,
